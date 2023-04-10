@@ -16,7 +16,7 @@ const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const path = require('path')
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 dotenv.config({ path: './config/config.env' })
 
@@ -38,6 +38,6 @@ app.use('/', homeRoutes)
 app.use('/auth', authRoutes)
 app.use('/dashboard', dashRoutes)
 
-app.listen(process.env.PORT || 3000, (req, res) => {
+app.listen(PORT, (req, res) => {
     console.log(`Tyte-Wheels is running.`)
 })
