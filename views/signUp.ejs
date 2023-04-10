@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Edu+NSW+ACT+Foundation&family=Indie+Flower&family=Manrope:wght@300&family=Outfit:wght@300&family=Quicksand:wght@300;400&family=Rajdhani:wght@300;400&display=swap" rel="stylesheet">
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/customStyle.css" rel="stylesheet">
+
+    <title>Tyte Wheels - Create Account</title>
+</head>
+<body class="h-screen w-screen">
+    <header id="signUpHeader" class="flex flex-row flex-wrap items-center justify-center text-center h-1/4 w-full">
+        <!-- <img src="/images/wheel.png";> -->
+        <h1 class="text-6xl font-bold w-full mt-12">Tyte Wheels</h1>
+        <h2 class="text-4xl w-full">Create Account</h2>
+    </header>
+    <div id="loginContainer" class="flex flex-row flex-wrap justify-center items-center pb-8 h-3/4 w-screen text-3xl">
+
+        <div id="g_id_onload"
+        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+        data-login_uri="https://your.domain/your_login_endpoint"
+        data-auto_prompt="false">
+     </div>
+     <div class="g_id_signin w-3/4 h-10"
+        data-type="standard"
+        data-size="large"
+        data-theme="outline"
+        data-text="sign_in_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+     </div>
+
+        <form id="createAccountForm" name="createAccountForm" class="flex flex-col flex-nowrap justify-center h-auto w-4/5 border-2 px-2">
+            <label class="text-lg">First Name:</label>
+            <input type="text" name="first_name" id="firstName" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
+            <label class="text-lg">Last Name:</label>
+            <input type="text" name="last_name" id="lastName" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
+            <label class="text-lg">Phone Number:</label>
+            <input type="tel" name="phone_number" id="phone" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
+            <label class="text-lg">Email:</label>
+            <input type="email" name="email" id="emailInput" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
+            <label class="text-lg">Date of Birth:</label>
+            <input type="date" name="date_of_birth" id="dateOfBirth" class="formInput rounded-md border-2 mb-4 px-1 text-xl">
+
+            <input id="submitBtn" type="submit" class="w-full h-1/4 border-2 rounded-lg my-2">
+
+        </form>
+        <!-- <button class="w-full h-1/4 border-2 rounded-lg">Submit</button> -->
+    </div>
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>

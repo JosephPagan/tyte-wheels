@@ -1,0 +1,106 @@
+@import url('../node_modules/font-awesome/css/font-awesome.min.css');
+
+/* 
+
+font-family: 'Caveat', cursive;
+font-family: 'Edu NSW ACT Foundation', cursive;
+font-family: 'Indie Flower', cursive;
+font-family: 'Manrope', sans-serif;
+font-family: 'Outfit', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Rajdhani', sans-serif; 
+
+*/
+
+/* Colors 
+
+#fe5b00 - orange
+#e3e2df - grey
+#736f6c - dark grey
+
+*/
+
+body {
+    background: rgb(254,91,0);
+    background: linear-gradient(0deg, rgba(254,91,0,1) 0%, rgba(255,255,255,1) 64%);
+    overflow: hidden;
+}
+
+#imageContainer {
+    width: 50%;
+}
+
+header img {
+    position: absolute;
+    width: 100%;
+    top: -25%;
+    left: -44%;
+    /*animation-name*/
+    -webkit-animation-name: spin-me;
+    animation-name: spin-me;
+    /*animation-iteration-count*/
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    /*animation-duration*/
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+    /*animation-timing-function*/
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes spin-me{
+    0% {
+      -webkit-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  @keyframes spin-me{
+    0% {
+      -webkit-transform: rotateZ(0deg);
+      transform: rotateZ(0deg);
+    }
+    100% {
+      -webkit-transform: rotateZ(360deg);
+      transform: rotateZ(360deg);
+    }
+  }
+
+
+h1 {
+    font-family: 'Indie Flower', cursive;
+}
+
+#loginContainer {
+    background: url(/images/lock.png);
+    background-repeat: no-repeat;
+}
+
+    #loginContainer a,
+    #loginContainer #submitBtn {
+        display: flex;
+        justify-content: center;
+        background-color: #fe5b00;
+        color: white;
+        font-family: 'Outfit', sans-serif;
+        opacity: .9;
+        text-align: center;
+        align-items: center;
+    }
+
+        #createAccountForm,
+        #rideSelectForm,
+        #rideImageForm,
+        #waiverForm {
+            background-color: rgba(211, 211, 211, 0.6);
+            border-radius: 8px;
+        }
+
+            #createAccountForm label {
+                font-family: 'Manrope', sans-serif;
+            }
