@@ -22,7 +22,7 @@
     </header>
     <div id="loginContainer" class="flex flex-row flex-wrap justify-center items-center pb-8 h-3/4 w-screen text-3xl">
 
-        <div id="g_id_onload"
+    <!-- <div id="g_id_onload"
         data-client_id="YOUR_GOOGLE_CLIENT_ID"
         data-login_uri="https://your.domain/your_login_endpoint"
         data-auto_prompt="false">
@@ -34,9 +34,15 @@
         data-text="sign_in_with"
         data-shape="rectangular"
         data-logo_alignment="left">
-     </div>
+     </div> -->
 
-        <form id="createAccountForm" name="createAccountForm" class="flex flex-col flex-nowrap justify-center h-auto w-4/5 border-2 px-2">
+     <% if (locals.messages.errors) { %>
+        <% messages.errors.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+
+        <form action="/signup" method="POST" id="createAccountForm" name="createAccount" class="flex flex-col flex-nowrap justify-center h-auto w-4/5 border-2 px-2">
             <label class="text-lg">First Name:</label>
             <input type="text" name="first_name" id="firstName" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
             <label class="text-lg">Last Name:</label>
@@ -47,6 +53,10 @@
             <input type="email" name="email" id="emailInput" class="formInput rounded-md border-2 mb-4 px-1 text-lg">
             <label class="text-lg">Date of Birth:</label>
             <input type="date" name="date_of_birth" id="dateOfBirth" class="formInput rounded-md border-2 mb-4 px-1 text-xl">
+            <label class="text-lg">Password:</label>
+            <input type="password" name="password" id="password" class="formInput rounded-md border-2 mb-4 px-1 text-xl">
+            <label class="text-lg">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="cfmpassword" class="formInput rounded-md border-2 mb-4 px-1 text-xl">
 
             <input id="submitBtn" type="submit" class="w-full h-1/4 border-2 rounded-lg my-2">
 

@@ -6,7 +6,6 @@ const app = express()
 const connectDB = require('./config/db')
 
 const homeRoutes = require('./routes/homeRoutes')
-const authRoutes = require('./routes/auth')
 const dashRoutes = require('./routes/dashRoutes')
 
 const bodyParser = require('body-parser')
@@ -34,8 +33,9 @@ app.use(session({ secret: 'cats', resave: false, saveUninitialized: false,  stor
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(flash())
+
 app.use('/', homeRoutes)
-app.use('/auth', authRoutes)
 app.use('/dashboard', dashRoutes)
 
 app.listen(PORT, (req, res) => {
