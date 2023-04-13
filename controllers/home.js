@@ -1,3 +1,5 @@
+const User = require('../models/User')
+
 module.exports = {
     getHome: (req,res)=> {
         res.render('home.ejs')
@@ -16,5 +18,28 @@ module.exports = {
     },
     getWaiver: (req, res) => {
         res.render('waiver.ejs')
+    },
+    updateWheels: async (req, res) => {
+        console.log(req.user)
+        try {
+            await User.findOneAndUpdate({_id: req.user}, {$set: {wheelType: req.body.wheels}})
+            res.redirect('/ride-image')
+        } catch (err) {
+            console.log(err)
+        }
+    },
+    updateWaiver: async (req, res) => {
+        console.log(req.body)
+        try {
+            if (req.body.waiverAnswer === 'true') {
+                await User.findOneAndUpdate({_id: req.user}, {$set: {waiverSign: true}})
+                res.redirect('/dashboard')
+                
+            } else {
+                res.redirect('/logout')
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
 }

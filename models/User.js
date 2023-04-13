@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   dateOfBirth: { type: Date, required: true },
   wheelType: { type: String, default: null },
+  numberOfKeeps: { type: Number, default: 0 },
   waiverSign: { type: Boolean, default: false },
   dateJoined: { type: Date, default: Date.now },
   password: String

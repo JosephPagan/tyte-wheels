@@ -21,7 +21,7 @@
         <h2 class="text-4xl w-full">User Waiver</h2>
     </header>
     <div id="loginContainer" class="flex flex-row flex-wrap justify-center items-center px-2 pb-4 h-3/4 w-screen text-3xl">
-        <form id="waiverForm" name="waiverForm" class="flex flex-row flex-wrap justify-evenly h-full w-full border-2 p-2 overflow-scroll text-lg">
+        <form action="/update-waiver" method="POST" id="waiverForm" name="waiverForm" class="flex flex-row flex-wrap justify-evenly h-full w-full border-2 p-2 overflow-scroll text-lg">
             <div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ornare placerat sem sed maximus. Quisque iaculis nulla sed magna finibus, ac molestie velit imperdiet. Sed ac diam eget justo posuere venenatis. Praesent fringilla blandit dolor id mattis. Praesent semper sodales augue, in accumsan lacus fermentum ut. Nulla venenatis eget quam a faucibus. Quisque fermentum sit amet magna non condimentum.
                     <br>
@@ -31,8 +31,8 @@
                 </p>
             </div>
             <ul class="flex flex-row flex-nowrap justify-around items-center w-full h-12">
-                <li><input class="h-4 w-4 mr-2" type="radio" name="waiverAnswer">Accept</li>
-                <li><input class="h-4 w-4 mr-2" type="radio" name="waiverAnswer">Deny</li>
+                <li><input class="h-4 w-4 mr-2" type="radio" name="waiverAnswer" value="true">Accept</li>
+                <li><input class="h-4 w-4 mr-2" type="radio" name="waiverAnswer" value="false">Deny</li>
             </ul>
             <input id="submitBtn" type="submit" class="w-full h-1/8 border-2 rounded-lg">
         </form>

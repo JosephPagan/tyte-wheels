@@ -21,12 +21,12 @@
         <h2 class="text-4xl w-full">What type of wheels do you ride?</h2>
     </header>
     <div id="loginContainer" class="flex flex-row flex-wrap justify-center items-center pb-4 h-2/4 w-screen text-3xl">
-        <form id="rideSelectForm" name="createAccountForm" class="flex flex-row flex-wrap justify-evenly h-full w-4/5 border-2 p-2">
+        <form action="/update-ride" method="POST" id="rideSelectForm" name="createAccountForm" class="flex flex-row flex-wrap justify-evenly h-full w-4/5 border-2 p-2">
             <ul class="flex flex-row flex-wrap justify-evenly h-3/4">
-                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio>Bike</li>
-                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio>Scooter</li>
-                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio>E-Bike</li>
-                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio>E-Scooter</li>
+                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio name="wheels" value="bike">Bike</li>
+                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio name="wheels" value="scooter">Scooter</li>
+                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio name="wheels" value="e-bike">E-Bike</li>
+                <li class="w-full"><input class="mx-3 border-0 h-5 w-5" type=radio name="wheels" value="e-scooter">E-Scooter</li>
             </ul>
             <input id="submitBtn" type="submit" class="w-full h-1/8 border-2 rounded-lg">
 

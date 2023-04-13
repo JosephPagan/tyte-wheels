@@ -27,11 +27,24 @@
         </div>
         
     </header>
-    <div class="flex flex-row items-start px-4 py-6 h-3/4 w-screen text-3xl">
-        <h2>Hi <%= userDataArray.firstName %>,</h2>
+    <div id="dashContainer" class="flex flex-row flex-wrap items-start px-4 py-6 h-2/4 w-screen text-3xl">
+        <h2 class="w-full">Hi <%= userDataArray.firstName %>,</h2>
 
-        
-        
+        <div class="flex flex-row flex-wrap h-1/2">
+            <% if (keepDataArray === 0) { %>
+                <h3>You have no active keeps.</h3>
+                <a href="/start-keep" class="w-full h-12 mt-2 border-2 rounded-lg">Start New Ryde Keep</a>
+            <% } else { %>
+                <h3>Active Keep: </h3>
+                <h4>Duration: </h4>
+                <a href="#" class="w-full h-12 mt-2 border-2 rounded-lg">End Ryde Keep</a>
+            <% } %>
+
+        </div>
+
+        <div id="weatherContainer">
+            <h3>Today's Weather Report</h3>
+        </div>
     </div>
     
 </body>

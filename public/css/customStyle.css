@@ -82,6 +82,7 @@ h1 {
 }
 
     #loginContainer a,
+    #dashContainer a,
     #loginContainer #submitBtn {
         display: flex;
         justify-content: center;
