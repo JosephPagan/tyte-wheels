@@ -5,5 +5,9 @@ const dashController = require('../controllers/dash')
 // const authMiddleware = require('../middleware/auth')
 
 router.get('/', dashController.getDash)
+router.get('/new-keep', dashController.getNewKeep)
+router.post('/post-keep', dashController.postKeep)
+router.put('/end-keep', dashController.endKeep)
+router.get('/history', dashController.getHistory)
 
 module.exports = router

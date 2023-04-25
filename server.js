@@ -7,6 +7,7 @@ const connectDB = require('./config/db')
 
 const homeRoutes = require('./routes/homeRoutes')
 const dashRoutes = require('./routes/dashRoutes')
+const devRoutes = require('./routes/devRoutes')
 
 const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
@@ -37,6 +38,7 @@ app.use(flash())
 
 app.use('/', homeRoutes)
 app.use('/dashboard', dashRoutes)
+app.use('/dev', devRoutes)
 
 app.listen(PORT, (req, res) => {
     console.log(`Tyte-Wheels is running.`)

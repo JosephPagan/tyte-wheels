@@ -20,7 +20,6 @@ module.exports = {
         res.render('waiver.ejs')
     },
     updateWheels: async (req, res) => {
-        console.log(req.user)
         try {
             await User.findOneAndUpdate({_id: req.user}, {$set: {wheelType: req.body.wheels}})
             res.redirect('/ride-image')
@@ -29,7 +28,6 @@ module.exports = {
         }
     },
     updateWaiver: async (req, res) => {
-        console.log(req.body)
         try {
             if (req.body.waiverAnswer === 'true') {
                 await User.findOneAndUpdate({_id: req.user}, {$set: {waiverSign: true}})

@@ -37,10 +37,12 @@ const User = require('../models/User')
   }
   
   exports.logout = (req, res) => {
+    console.log(req)
     req.logout(function(err) {
         if (err) {
             return next(err)
         }
+        console.log(`${req.user} has been logged out.`)
         req.session.destroy()
         res.redirect('/login')
       })
@@ -56,6 +58,7 @@ const User = require('../models/User')
   }
   
   exports.postSignup = (req, res, next) => {
+    // console.log(req.body)
     const validationErrors = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
@@ -68,15 +71,16 @@ const User = require('../models/User')
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
   
     const user = new User({
+      userName: req.body.first_name,
       firstName: req.body.first_name,
       lastName: req.body.last_name,
       phone: req.body.phone_number,
       email: req.body.email,
-      dateOfBirth: req.body.date_of_birth,
+      zipCode: req.body.zipCode,
       password: req.body.password
     })
 
-    User.findOne({$or: [ {email: req.body.email}, {userName: req.body.firstName} ]})
+    User.findOne({email: req.body.email})
         .then((err, existingUser) => {
             if (err) { return next(err) }
             if (existingUser) {

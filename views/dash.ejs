@@ -16,7 +16,7 @@
 
     <title>Tyte Wheels - Dashboard</title>
 </head>
-<body class="min-h-screen h-screen w-screen">
+<body class="h-screen min-h-screen w-screen overflow-scroll">
     <header class="flex flex-row flex-nowrap items-center justify-between text-center h-16 px-2 pb-2 w-full border-b-2">
         <!-- <img src="/images/wheel.png";> -->
         <h1 class="text-4xl font-bold w-1/2 mt-2">Tyte Wheels</h1>
@@ -27,25 +27,60 @@
         </div>
         
     </header>
-    <div id="dashContainer" class="flex flex-row flex-wrap items-start px-4 py-6 h-2/4 w-screen text-3xl">
+    <div id="dashContainer" class="flex flex-row flex-wrap items-start px-4 py-6 h-80 w-screen text-3xl">
         <h2 class="w-full">Hi <%= userDataArray.firstName %>,</h2>
 
         <div class="flex flex-row flex-wrap h-1/2">
             <% if (keepDataArray === 0) { %>
                 <h3>You have no active keeps.</h3>
-                <a href="/start-keep" class="w-full h-12 mt-2 border-2 rounded-lg">Start New Ryde Keep</a>
+                <a href="/dashboard/new-keep" class="w-full h-12 mt-2 border-2 rounded-lg">Start New Ryde Keep</a>
+                <a href="/dashboard/history" class="w-full h-12 mt-2 border-2 rounded-lg">Keep History</a>
             <% } else { %>
-                <h3>Active Keep: </h3>
-                <h4>Duration: </h4>
-                <a href="#" class="w-full h-12 mt-2 border-2 rounded-lg">End Ryde Keep</a>
+                <h3 class="w-full">Active Keep: <%= keepDataArray.stationName %></h3>
+                <h4 class="hidden" id="keepStart"><%= keepDataArray.keepDate %></h4>
+                <h4 class="hidden" id="keepID"><%= keepDataArray._id %></h4>
+                <h4 class="hidden" id="stationID"><%= keepDataArray.keepStation %></h4>
+                <h4 class="w-3/4" id="durationElement">Duration: </h4>
+                <button id="endKeepBtn" class="w-full h-12 mt-2 border-2 rounded-lg">End Ryde Keep</button>
             <% } %>
 
         </div>
-
-        <div id="weatherContainer">
-            <h3>Today's Weather Report</h3>
+    </div>
+    <div id="weatherContainer" class="relative h-1/3 w-full px-4 py-6 text-3xl">
+        <h3>Weather Report</h3>
+        <h3 id="location"></h3>
+        <h4 id="userZipCode" class="hidden"><%= userDataArray.zipCode %></h4>
+        <div id="weather1" class="flex flex-row flex-wrap items-center justify-center border-2 rounded-lg w-full h-2/3 my-4 px-2">
+            <div class="flex flex-row justify-center items-center w-1/2 h-full flex-wrap text-center">
+                <h3 id="date1" class="w-full"></h3>
+                <img id="weatherImg1" class="w-1/2">
+            </div>
+            <div class="flex flex-row justify-between items-center w-1/2 h-full flex-wrap text-center">
+                <h4 id="condition1" class="w-full text-center"></h4>
+                <h4 id="tempF1" class="w-full text-center"></h4>
+            </div>     
+        </div>
+        <div id="weather2" class="flex flex-row flex-wrap items-center justify-center border-2 rounded-lg w-full h-2/3 my-4 px-2">
+            <div class="flex flex-row justify-center items-center w-1/2 h-full flex-wrap text-center">
+                <h3 id="date2" class="w-full"></h3>
+                <img id="weatherImg2" class="w-1/2">
+            </div>
+            <div class="flex flex-row justify-between items-center w-1/2 h-full flex-wrap text-center">
+                <h4 id="condition2" class="w-full text-center"></h4>
+                <h4 id="tempF2" class="w-full text-center"></h4>
+            </div>
+        </div>
+        <div id="weather3" class="flex flex-row flex-wrap items-center justify-center border-2 rounded-lg w-full h-2/3 my-4 px-2">
+            <div class="flex flex-row justify-center items-center w-1/2 h-full flex-wrap text-center">
+                <h3 id="date3" class="w-full"></h3>
+                <img id="weatherImg3" class="w-1/2">
+            </div>
+            <div class="flex flex-row justify-between items-center w-1/2 h-full flex-wrap text-center">
+                <h4 id="condition3" class="w-full text-center"></h4>
+                <h4 id="tempF3" class="w-full text-center"></h4>
+            </div>
         </div>
     </div>
-    
+    <script src="/js/dashScript.js"></script>
 </body>
 </html>

@@ -23,7 +23,9 @@ font-family: 'Rajdhani', sans-serif;
 body {
     background: rgb(254,91,0);
     background: linear-gradient(0deg, rgba(254,91,0,1) 0%, rgba(255,255,255,1) 64%);
-    overflow: hidden;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 #imageContainer {
@@ -83,7 +85,9 @@ h1 {
 
     #loginContainer a,
     #dashContainer a,
-    #loginContainer #submitBtn {
+    #loginContainer #submitBtn,
+    #newKeepSubmitBtn,
+    #dashContainer button {
         display: flex;
         justify-content: center;
         background-color: #fe5b00;
@@ -105,3 +109,13 @@ h1 {
             #createAccountForm label {
                 font-family: 'Manrope', sans-serif;
             }
+
+/* Dashboard Style */
+
+#weather1,
+#weather2,
+#weather3 {
+  background-color: rgb(247, 243, 240, .7);
+  font-weight: 400;
+}
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Edu+NSW+ACT+Foundation&family=Indie+Flower&family=Manrope:wght@300&family=Outfit:wght@300&family=Quicksand:wght@300;400&family=Rajdhani:wght@300;400&display=swap" rel="stylesheet">
+
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/customStyle.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/4235f9213e.js" crossorigin="anonymous"></script>
+
+    <title>Tyte Wheels - Dashboard</title>
+</head>
+<body class="h-screen min-h-screen w-screen overflow-scroll">
+    <header class="flex flex-row flex-nowrap items-center justify-between text-center h-16 px-2 pb-2 w-full border-b-2">
+        <!-- <img src="/images/wheel.png";> -->
+        <h1 class="text-4xl font-bold w-1/2 mt-2">Tyte Wheels</h1>
+        <div class="flex flex-row flex-nowrap w-1/3 justify-around text-3xl">
+            <a href="#"><i class="fa fa-inbox"></i></a>
+            <a href="#"><i class="fa fa-gear"></i></a>
+            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+        </div>
+        
+    </header>
+    <div id="dashContainer" class="flex flex-row flex-wrap justify-start items-start px-4 py-6 h-full w-screen text-3xl">
+        <h2 class="w-full">New Keep Tyte</h2>
+        <form action="/dashboard/post-keep" method="POST" class="h-auto w-full flex flex-row flex-wrap justify-normal">
+            <label>Keep Station</label>
+            <select id="stationSelect" class="border-2 my-3" name="new_keep_station" onchange="recordKeepStation()">
+                <option value="" disabled selected>Select Station</option>
+                <% for (var u = 0; u < stationArray.length; u++) { %>
+                    <option id="stationName" value="<%= stationArray[u]._id %>"><%= stationArray[u].stationName %></option>
+                <% } %>
+            </select>
+            <input id="stationNameHolder" class="hidden" name="station_name"></input>
+            <h3>Ride Type: </h3>
+            <div class="flex flex-row flex-wrap justify-center items-center border-2 my-2">
+                <label class="w-2/3">Bike</label>
+                <input type="radio" name="ride_type" value="bike" class="w-4 h-4">
+                <label class="w-2/3">Scooter</label>
+                <input type="radio" name="ride_type" value="scooter" class="w-4 h-4">
+                <label class="w-2/3">E-Bike</label>
+                <input type="radio" name="ride_type" value="e-bike" class="w-4 h-4">
+                <label class="w-2/3">E-Scooter</label>
+                <input type="radio" name="ride_type" value="e-scooter" class="w-4 h-4">
+                
+            </div>
+            <input type="submit" id="newKeepSubmitBtn" class="w-full h-12 mt-2 border-2 rounded-lg">
+        </form>
+        <script src="/js/keepScript.js"></script>
+    </div>
+</body>
+</html>

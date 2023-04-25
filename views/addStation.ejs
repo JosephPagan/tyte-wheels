@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Edu+NSW+ACT+Foundation&family=Indie+Flower&family=Manrope:wght@300&family=Outfit:wght@300&family=Quicksand:wght@300;400&family=Rajdhani:wght@300;400&display=swap" rel="stylesheet">
+
+    <link href="/css/main.css" rel="stylesheet">
+    <link href="/css/customStyle.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/4235f9213e.js" crossorigin="anonymous"></script>
+
+    <title>Tyte Wheels - Add Station</title>
+</head>
+<body class="h-screen min-h-screen w-screen overflow-scroll">
+    <header class="flex flex-row flex-nowrap items-center justify-between text-center h-16 px-2 pb-2 w-full border-b-2">
+        <!-- <img src="/images/wheel.png";> -->
+        <h1 class="text-4xl font-bold w-1/2 mt-2">Tyte Wheels</h1>
+        <div class="flex flex-row flex-nowrap w-1/3 justify-around text-3xl">
+            <a href="#"><i class="fa fa-inbox"></i></a>
+            <a href="#"><i class="fa fa-gear"></i></a>
+            <a href="/logout"><i class="fa fa-sign-out"></i></a>
+        </div>
+        
+    </header>
+    <div id="dashContainer" class="flex flex-row flex-wrap items-start px-4 py-6 h-1/2 w-screen text-3xl">
+        <h2 class="w-full">New Station</h2>
+        <form action="/dev/post-station" method="POST" name="addStationForm" class="border-2 flex flex-row flex-wrap justify-start items-center h-full px-2">
+            <label>Station Name:</label>
+            <input type="text" name="new_name" class="border-2 w-full">
+            <label>Station Zip:</label>
+            <input type="postal" name="new_zip_code" class="border-2 w-full">
+            <label>Station Capacity:</label>
+            <input type="number" name="new_capacity" class="border-2 w-full">
+            <input type="submit" class="border-2 w-full">
+        </form>
+
+    </div>
+</body>
+</html>
