@@ -8,6 +8,7 @@ router.get('/', dashController.getDash)
 router.get('/new-keep', dashController.getNewKeep)
 router.post('/post-keep', dashController.postKeep)
 router.put('/end-keep', dashController.endKeep)
+router.get('/summary', dashController.getSummary)
 router.get('/history', dashController.getHistory)
 
 module.exports = router

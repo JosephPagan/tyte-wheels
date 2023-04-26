@@ -1,8 +1,12 @@
-document.addEventListener('DOMContentLoaded', weatherRequest(), false)
-
+if (document.getElementById('weatherContainer')) {
+    document.addEventListener('DOMContentLoaded', weatherRequest(), false)
+} 
 const deleteButton = document.getElementById('endKeepBtn')
 
-deleteButton.addEventListener('click', endKeep)
+if (deleteButton) {
+    deleteButton.addEventListener('click', endKeep)
+}
+
 
 function weatherRequest () {
     const userZip = document.getElementById('userZipCode').innerText
@@ -69,6 +73,15 @@ function calcDuration() {
     const duration = now - Date.parse(start);
     const element = document.getElementById('durationElement')
     element.innerText = `Duration: ${milliesToMinutesAndSeconds(duration)}`
+
+    const price = document.getElementById('price')
+    const durationMinutes = Math.floor((duration / (1000 * 60)) % 60)
+    const calcPrice = durationMinutes * 0.009375
+    if (durationMinutes > 1) {
+        price.innerText = `Price: $${calcPrice.toFixed(2)}`
+    } else {
+        price.innerText = `Price: $0.00`
+    }
 }
 
 const keepDetermine = document.getElementById('keepStart')
@@ -80,6 +93,8 @@ if (keepDetermine) {
 async function endKeep(){
     const keepID = document.getElementById('keepID').innerText
     const stationID = document.getElementById('stationID').innerText
+    var keepPrice = document.getElementById('price').innerText.split(' ')
+    var keepPriceEl = keepPrice[1]
     var durationArray = document.getElementById('durationElement').innerText.split(' ')
     var durationElement = durationArray[1]
     console.log(durationArray)
@@ -90,11 +105,12 @@ async function endKeep(){
             body: JSON.stringify({
                 'ObjectId': `${keepID}`,
                 'StationID': `${stationID}`,
-                'DurationTime': `${durationElement}`
+                'DurationTime': `${durationElement}`,
+                'Price': `${keepPriceEl}`
             })
         })
         const data = await response.text()
-        window.location.href = "/dashboard";
+        window.location.href = `/dashboard/summary?${keepID}`;
     }catch(err){
         console.log(err)
     }

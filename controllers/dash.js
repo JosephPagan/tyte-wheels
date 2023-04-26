@@ -55,15 +55,25 @@ module.exports = {
         }
     },
     endKeep: async (req, res) => {
-        console.log(req.body)
+        // console.log(req.body)
         try{
-            await Keep.findOneAndUpdate({_id: req.body.ObjectId}, { $set: { active: false, duration: req.body.DurationTime }})
+            await Keep.findOneAndUpdate({_id: req.body.ObjectId}, { $set: { active: false, duration: req.body.DurationTime, keepPrice: req.body.Price }})
             await User.findOneAndUpdate({_id: req.user}, { $set: {numberOfKeeps: 0 }})
             await Station.findOneAndUpdate({_id: req.body.StationID}, { $inc: { keepCount: -1 }})
             console.log(`Keep ${req.body.ObjectId} Ended.`)
             res.json('Keep Ended')
         } catch (err) {
             console.log(err)
+        }
+    },
+    getSummary: async (req, res) => {
+        try {
+            const userData = await User.findOne({userId: req.user._id})
+            var keepData = await Keep.findOne({_id: req._parsedUrl.query})
+            res.render('keepSummary.ejs', { keepDataArray: keepData, userDataArray: userData })
+        } catch (err) {
+            console.log(err)
+            res.redirect('/dashboard')
         }
     },
     getHistory: async (req, res) => {

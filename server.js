@@ -20,8 +20,6 @@ const PORT = process.env.PORT || 3000
 
 dotenv.config({ path: './config/config.env' })
 
-require('./config/passport')(passport)
-
 connectDB()
 
 app.use(cors())
@@ -31,6 +29,9 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({ secret: 'cats', resave: false, saveUninitialized: false,  store: MongoStore.create({mongoUrl: process.env.MONGO_URL}) }))
+
+require('./config/passport')(passport)
+
 app.use(passport.initialize())
 app.use(passport.session())
 

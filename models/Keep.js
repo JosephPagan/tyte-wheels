@@ -8,7 +8,7 @@ const KeepSchema = new mongoose.Schema({
     rideType: { type: String, required: true },
     wheelsImage: { type: String },
     duration: { type: String, default: null },
-    keepPrice: { type: Number, default: 0 },
+    keepPrice: { type: String, default: 0 },
     active: { type: Boolean, default: true }
 })
 
