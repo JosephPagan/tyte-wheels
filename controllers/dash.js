@@ -12,7 +12,7 @@ module.exports = {
                 res.render('dash.ejs', {userDataArray: userData, keepDataArray: keepData})
             } else {
                 const stationData = await Station.find()
-                console.log(keepData)
+                // console.log(keepData)
                 res.render('dash.ejs', {userDataArray: userData, keepDataArray: keepData, stationDataArray: stationData})
             }
         } catch (err) {
@@ -21,7 +21,6 @@ module.exports = {
         }
     },
     getNewKeep: async (req, res) => {
-        console.log(req.user)
         try {
             const userData = await User.findOne({userId: req.user._id})
             var keepData = await Keep.findOne({userID: req.user._id})
@@ -38,7 +37,6 @@ module.exports = {
         }
     },
     postKeep: async (req, res) => {
-        console.log(req.body)
         try {
             await Keep.create({
                 userID: req.user,
@@ -48,14 +46,22 @@ module.exports = {
             })
             await User.findOneAndUpdate({ _id: req.user }, { $set: { numberOfKeeps: 1 }})
             await Station.findOneAndUpdate( {_id: req.body.new_keep_station }, { $inc: { keepCount: 1 }})
-            res.redirect('/dashboard')
+            res.redirect(`/dashboard/qr-entry`)
         } catch (err) {
             console.log(err)
             res.redirect('/dashboard/new-keep')
         }
     },
+    getQR: async (req, res) => {
+        try{
+            const userData = await User.findOne({_id: req.user})
+            const keepData = await Keep.findOne({userID: req.user, active: true})
+            res.render('qrCode.ejs', {userDataArray: userData, keepDataArray: keepData})
+        } catch (err) {
+            console.log(err)
+        }
+    },
     endKeep: async (req, res) => {
-        // console.log(req.body)
         try{
             await Keep.findOneAndUpdate({_id: req.body.ObjectId}, { $set: { active: false, duration: req.body.DurationTime, keepPrice: req.body.Price }})
             await User.findOneAndUpdate({_id: req.user}, { $set: {numberOfKeeps: 0 }})

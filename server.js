@@ -16,13 +16,14 @@ const mongoose = require('mongoose')
 const MongoStore = require('connect-mongo')
 const methodOverride = require('method-override')
 const path = require('path')
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 dotenv.config({ path: './config/config.env' })
 
 connectDB()
 
 app.use(cors())
+
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
